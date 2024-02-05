@@ -1,0 +1,9 @@
+@import "./variables";
+
+.primary-btn {
+  background-color: $theme-deafult_main;
+  color: $color-black;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+}

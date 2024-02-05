@@ -1,0 +1,50 @@
+<div class="parcel">
+  <h1 class="title parcel-header">Track your parcel</h1>
+  <p class="tagline parcel-header">
+    Track your order by entering your waybill number
+  </p>
+  <p class="title parcel-hint">try with code: 123 or 124 or 125</p>
+  @if (isParcelNotFound) {
+  <p class="parcel-error">order could not be found</p>
+  }
+  <div class="parcel_input-wrapper">
+    <input
+      [(ngModel)]="parcelCode"
+      class="parcel_input-wrapper-code"
+      type="text"
+      placeholder="Enter tracking code"
+    />
+    <button
+      class="parcel_input-wrapper-btn primary-btn"
+      (click)="trackParcel()"
+    >
+      search
+    </button>
+  </div>
+  @if (parcelInfo) {
+  <div class="parcel_info">
+    <h1 class="parcel_info-title title">
+      {{ parcelInfo.title }}
+      <span
+        [classList]="'parcel_info-status parcel_info-' + parcelInfo.status"
+        >{{ parcelInfo.status }}</span
+      >
+    </h1>
+    <p class="tagline">#{{ parcelInfo.id }}</p>
+    @if ( parcelInfo.status !== "delivered"){
+    <p class="tagline">
+      <span class="title">Current Location : </span>
+
+      {{ parcelInfo.currentLocation }}
+    </p>
+    }
+    <p class="tagline">
+      <span class="title">Target Location : </span>
+      {{ parcelInfo.targetLocation }}
+    </p>
+    <p class="tagline">
+      <span class="title"> Delivery Time : </span> {{ parcelInfo.deliveryTime }}
+    </p>
+  </div>
+  }
+</div>
